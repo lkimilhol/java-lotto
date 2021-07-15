@@ -75,4 +75,5 @@ A. 출력을 위해서는 getter를 추가해주셔야 합니다. getter를 아�
 * Shop에서 중복되는 메서드를 제거한다
 * Shop에서 Money의 체크를 Money에서 하도록 한다. 그 외 Money에 역할을 부여한다.
 * 각 객체에 역할을 위임하여 LottoGame의 로직을 줄인다.
+* Quantity 객체 생성
 * 에러를 좀 더 구체화 시켜 리턴하도록 한다.
