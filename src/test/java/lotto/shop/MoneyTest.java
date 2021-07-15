@@ -12,7 +12,7 @@ public class MoneyTest {
     @DisplayName("돈 생성")
     void create() {
         //given
-        Money money = new Money(14000);
+        Money money = Money.of(14000);
         //when
         int amount = money.amount();
         //then
@@ -26,6 +26,6 @@ public class MoneyTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Money(-10)).withMessageContaining(ErrorMessage.MONEY_CANNOT_BE_NEGATIVE);
+                .isThrownBy(() -> Money.of(-10)).withMessageContaining(ErrorMessage.MONEY_CANNOT_BE_NEGATIVE);
     }
 }

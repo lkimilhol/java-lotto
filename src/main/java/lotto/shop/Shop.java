@@ -16,7 +16,7 @@ public class Shop {
     }
 
     private Money purchase(Money money, int quantity) {
-        return new Money(calculate(money, quantity));
+        return Money.of(calculate(money, quantity));
     }
 
     private void checkMoney(Money money) {

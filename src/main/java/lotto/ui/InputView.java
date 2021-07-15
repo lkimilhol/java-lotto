@@ -16,7 +16,7 @@ public class InputView {
 
     public static Money inputMoneyAmount() {
         String input = SCANNER.nextLine();
-        return new Money(toInteger(input));
+        return Money.of(toInteger(input));
     }
 
     public static List<Lotto> inputLottos(int selfLottoQuantity) {

@@ -5,9 +5,13 @@ import lotto.error.ErrorMessage;
 public class Money {
     private final int amount;
 
-    public Money(int amount) {
+    private Money(int amount) {
         checkNegative(amount);
         this.amount = amount;
+    }
+
+    public static Money of(int amount) {
+        return new Money(amount);
     }
 
     public int amount() {
