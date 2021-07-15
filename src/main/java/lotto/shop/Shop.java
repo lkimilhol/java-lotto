@@ -3,36 +3,36 @@ package lotto.shop;
 import lotto.error.ErrorMessage;
 
 public class Shop {
-    private static final int PURCHASE_PRICE = 1000;
+    private static final Money LOTTO_PRICE_MONEY = Money.of(1000);
 
-    public Money buySelfLotto(Money money, int lottoQuantity) {
-        checkMoney(money);
-        return purchase(money, lottoQuantity);
+    public Money buySelfLotto(Money ownMoney, int lottoQuantity) {
+        checkMoney(ownMoney);
+        return purchase(ownMoney, lottoQuantity);
     }
 
     public int buyAutoLotto(Money money) {
         checkMoney(money);
-        return money.amount() / PURCHASE_PRICE;
+        return money.getQuantity(LOTTO_PRICE_MONEY);
     }
 
-    private Money purchase(Money money, int quantity) {
-        return Money.of(calculate(money, quantity));
+    private Money purchase(Money ownMoney, int quantity) {
+        return calculate(ownMoney, quantity);
     }
 
     private void checkMoney(Money money) {
-        if (money.amount() < PURCHASE_PRICE) {
+        if (money.lt(LOTTO_PRICE_MONEY)) {
             throw new RuntimeException(ErrorMessage.NOT_ENOUGH_MONEY);
         }
     }
 
     private void checkMoney(Money money, int quantity) {
-        if (money.amount() < quantity * PURCHASE_PRICE) {
+        if (money.lt(LOTTO_PRICE_MONEY, quantity)) {
             throw new RuntimeException(ErrorMessage.NOT_ENOUGH_MONEY);
         }
     }
 
-    private int calculate(Money money, int quantity) {
+    private Money calculate(Money money, int quantity) {
         checkMoney(money, quantity);
-        return money.amount() - quantity * PURCHASE_PRICE;
+        return money.sub(LOTTO_PRICE_MONEY.multiplyQuantity(quantity));
     }
 }
