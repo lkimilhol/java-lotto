@@ -16,7 +16,6 @@ public class Shop {
     }
 
     private Money purchase(Money money, int quantity) {
-        checkMoney(money);
         return new Money(calculate(money, quantity));
     }
 
