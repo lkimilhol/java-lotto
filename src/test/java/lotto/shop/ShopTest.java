@@ -143,7 +143,7 @@ public class ShopTest {
     void buySelfAutoLotto() {
         //given
         //when
-        Money 남은_금액 = shop.buySelfLotto(Money.of(2000), 1);
+        Money 남은_금액 = shop.buySelfLotto(Money.of(2000), new Quantity(1));
         Quantity 자동_횟수 = shop.buyAutoLotto(남은_금액);
         Lotto 로또_수동 = Lotto.of(1, 2, 3, 4, 5, 6);
         LottoTicket 로또_티켓 = new LottoTicket(자동_횟수, 로또_수동);

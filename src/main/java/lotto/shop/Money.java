@@ -2,6 +2,7 @@ package lotto.shop;
 
 import java.util.Objects;
 
+import lotto.Quantity;
 import lotto.error.ErrorMessage;
 
 public class Money {
@@ -20,8 +21,8 @@ public class Money {
         return amount < money.amount;
     }
 
-    public boolean lt(Money lottoPriceMoney, int quantity) {
-        return amount < lottoPriceMoney.amount * quantity;
+    public boolean lt(Money lottoPriceMoney, Quantity quantity) {
+        return amount < lottoPriceMoney.amount * quantity.getAmount();
     }
 
     public int amount() {
@@ -32,8 +33,8 @@ public class Money {
         return new Money(amount - money.amount);
     }
 
-    public Money multiplyQuantity(int quantity) {
-        return new Money(amount * quantity);
+    public Money multiplyQuantity(Quantity quantity) {
+        return new Money(amount * quantity.getAmount());
     }
 
     public int getQuantity(Money money) {
