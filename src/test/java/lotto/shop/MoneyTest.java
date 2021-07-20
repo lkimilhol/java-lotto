@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import lotto.Quantity;
 import lotto.error.ErrorMessage;
 
 public class MoneyTest {
@@ -56,7 +57,7 @@ public class MoneyTest {
         // given
         Money money = Money.of(1000);
         // when
-        Money actual = money.multiplyQuantity(3);
+        Money actual = money.multiplyQuantity(new Quantity(3));
         // then
         assertThat(actual).isEqualTo(Money.of(3000));
     }

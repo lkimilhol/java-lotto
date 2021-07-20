@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import lotto.Quantity;
 import lotto.error.ErrorMessage;
 import lotto.lotto.Lotto;
 import lotto.shop.Money;
@@ -19,8 +20,8 @@ public class InputView {
         return Money.of(toInteger(input));
     }
 
-    public static List<Lotto> inputLottos(int selfLottoQuantity) {
-        return IntStream.range(0, selfLottoQuantity)
+    public static List<Lotto> inputLottos(Quantity selfLottoQuantity) {
+        return IntStream.range(0, selfLottoQuantity.getAmount())
                 .mapToObj(i -> InputView.inputLottoNumbers())
                 .collect(Collectors.toList());
     }
