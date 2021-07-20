@@ -26,6 +26,23 @@ public class MoneyTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Money(-10)).withMessageContaining(ErrorMessage.MONEY_CANNOT_BE_NEGATIVE);
+                .isThrownBy(() -> new Money(-10))
+                .withMessageContaining(ErrorMessage.MONEY_CANNOT_BE_NEGATIVE);
+    }
+
+    @DisplayName("돈 차감 로직 구현")
+    @Test
+    void sub() {
+        // given
+//        Money money = new Money(100);
+//        // when
+//        Money actual = money.sub(new Money(50));
+//        // then
+//        assertThat(actual.amount()).isEqualTo(50);
+
+        Money money = new Money(100);
+        Money result = money.sub(new Money(100));
+
+        System.out.println(result.amount());
     }
 }

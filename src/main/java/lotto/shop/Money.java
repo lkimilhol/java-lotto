@@ -10,6 +10,10 @@ public class Money {
         this.amount = amount;
     }
 
+    public Money sub(Money money) {
+        return new Money(this.amount - money.amount);
+    }
+
     public int amount() {
         return amount;
     }
