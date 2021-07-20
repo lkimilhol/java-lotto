@@ -27,7 +27,7 @@ public class ShopTest {
     @DisplayName("구매 금액에 맞는 로또 구입 횟수")
     void buyLottoCount() {
         //given
-        Money 초기_금액 = new Money(10000);
+        Money 초기_금액 = Money.of(10000);
         //when
         Quantity 로또_자동_개수 = shop.buyAutoLotto(초기_금액);
         LottoTicket 로또_티켓 = new LottoTicket(로또_자동_개수);
@@ -39,7 +39,7 @@ public class ShopTest {
     @DisplayName("구매 금액이 부족한 경우")
     void buyFailed() {
         //given
-        Money 초기_금액 = new Money(900);
+        Money 초기_금액 = Money.of(900);
         //when
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> shop.buyAutoLotto(초기_금액)).withMessageContaining(ErrorMessage.NOT_ENOUGH_MONEY);
@@ -50,7 +50,7 @@ public class ShopTest {
     @DisplayName("구매한 만큼 로또 구입")
     void buyLotto() {
         //given
-        Money 초기_금액 = new Money(10000);
+        Money 초기_금액 = Money.of(10000);
         //when
         Quantity 로또_자동_개수 = shop.buyAutoLotto(초기_금액);
         //then
@@ -61,7 +61,7 @@ public class ShopTest {
     @DisplayName("로또 오토")
     void makeLottoAuto() {
         //given
-        Money 초기_금액 = new Money(10000);
+        Money 초기_금액 = Money.of(10000);
         //when
         Quantity 로또_자동_개수 = shop.buyAutoLotto(초기_금액);
         LottoTicket 로또_티켓 = new LottoTicket(로또_자동_개수);
@@ -122,7 +122,7 @@ public class ShopTest {
     @DisplayName("셀프 로또 구매 확인")
     void buySelfLottoAmount() {
         //given
-        Money 초기_금액 = shop.buySelfLotto(new Money(10000), new Quantity(7));
+        Money 초기_금액 = shop.buySelfLotto(Money.of(10000), new Quantity(7));
         //then
         assertThat(초기_금액.amount()).isEqualTo(3000);
     }
@@ -134,7 +134,7 @@ public class ShopTest {
         //when
         //then
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> shop.buySelfLotto(new Money(10000), new Quantity(100)))
+                .isThrownBy(() -> shop.buySelfLotto(Money.of(10000), new Quantity(100)))
                 .withMessageContaining(ErrorMessage.NOT_ENOUGH_MONEY);
     }
 
@@ -143,7 +143,7 @@ public class ShopTest {
     void buySelfAutoLotto() {
         //given
         //when
-        Money 남은_금액 = shop.buySelfLotto(new Money(2000), new Quantity(1));
+        Money 남은_금액 = shop.buySelfLotto(Money.of(2000), 1);
         Quantity 자동_횟수 = shop.buyAutoLotto(남은_금액);
         Lotto 로또_수동 = Lotto.of(1, 2, 3, 4, 5, 6);
         LottoTicket 로또_티켓 = new LottoTicket(자동_횟수, 로또_수동);
