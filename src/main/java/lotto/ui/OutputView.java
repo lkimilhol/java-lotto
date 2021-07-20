@@ -2,6 +2,7 @@ package lotto.ui;
 
 import java.util.stream.Collectors;
 
+import lotto.Quantity;
 import lotto.enums.Message;
 import lotto.enums.Prize;
 import lotto.lotto.Lotto;
@@ -50,8 +51,8 @@ public class OutputView {
         println(Message.INPUT_BONUS_NUMBER.message());
     }
 
-    public static void printLottoQuantity(int self, int auto) {
-        System.out.printf("수동으로 %d장, 자동으로  %d 개를 구매했습니다", self, auto);
+    public static void printLottoQuantity(Quantity self, int auto) {
+        System.out.printf("수동으로 %d장, 자동으로  %d 개를 구매했습니다", self.getAmount(), auto);
         System.out.println();
     }
 

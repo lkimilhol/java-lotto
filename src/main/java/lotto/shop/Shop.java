@@ -1,21 +1,22 @@
 package lotto.shop;
 
+import lotto.Quantity;
 import lotto.error.ErrorMessage;
 
 public class Shop {
     private static final int PURCHASE_PRICE = 1000;
 
-    public Money buySelfLotto(Money money, int lottoQuantity) {
+    public Money buySelfLotto(Money money, Quantity lottoQuantity) {
         checkMoney(money);
         return purchase(money, lottoQuantity);
     }
 
-    public int buyAutoLotto(Money money) {
+    public Quantity buyAutoLotto(Money money) {
         checkMoney(money);
-        return money.amount() / PURCHASE_PRICE;
+        return new Quantity(money.amount() / PURCHASE_PRICE);
     }
 
-    private Money purchase(Money money, int quantity) {
+    private Money purchase(Money money, Quantity quantity) {
         checkMoney(money);
         return new Money(calculate(money, quantity));
     }
@@ -26,14 +27,14 @@ public class Shop {
         }
     }
 
-    private void checkMoney(Money money, int quantity) {
-        if (money.amount() < quantity * PURCHASE_PRICE) {
+    private void checkMoney(Money money, Quantity quantity) {
+        if (money.amount() < quantity.getAmount() * PURCHASE_PRICE) {
             throw new RuntimeException(ErrorMessage.NOT_ENOUGH_MONEY);
         }
     }
 
-    private int calculate(Money money, int quantity) {
+    private int calculate(Money money, Quantity quantity) {
         checkMoney(money, quantity);
-        return money.amount() - quantity * PURCHASE_PRICE;
+        return money.amount() - quantity.getAmount() * PURCHASE_PRICE;
     }
 }

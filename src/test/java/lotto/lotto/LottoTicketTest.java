@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import lotto.Quantity;
 import lotto.enums.Prize;
 
 class LottoTicketTest {
@@ -12,7 +13,7 @@ class LottoTicketTest {
     @DisplayName("당첨 테스트")
     void matchWinningLotto() {
         //given
-        int 자동_로또_개수 = 0;
+        Quantity 자동_로또_개수 = new Quantity(0);
         WinningNumber 당첨_번호 = WinningNumber.of(1, 2, 3, 4, 5, 6);
 
         Lotto 내가_선택한_번호 = Lotto.of(1, 2, 3, 4, 5, 16);
